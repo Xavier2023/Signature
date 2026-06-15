@@ -2,245 +2,430 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clearer Email Signature – Circular Flags (Wrapper Style)</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Clearer Email Signature – No Gap, Left Aligned</title>
+    <style>
+      /* Responsive fine-tuning for narrow screens — keep everything left-aligned */
+      @media only screen and (max-width: 550px) {
+        .logo-img {
+          width: 120px !important;
+          max-width: 120px !important;
+        }
+        .tagline-text {
+          font-size: 11px !important;
+          line-height: 1.3 !important;
+          letter-spacing: 0.2px !important;
+          padding: 3px 6px 3px 0 !important;
+        }
+        .greeting-text {
+          font-size: 15px !important;
+        }
+        .name-text {
+          font-size: 13px !important;
+        }
+        .contact-text {
+          font-size: 12px !important;
+        }
+        .disclaimer-text {
+          font-size: 11px !important;
+          line-height: 1.45 !important;
+        }
+        .flag-circle {
+          width: 28px !important;
+          height: 28px !important;
+        }
+        .flag-cell {
+          padding-right: 8px !important;
+        }
+        .flags-wrapper {
+          padding-bottom: 22px !important;
+        }
+        .website-link {
+          padding-bottom: 16px !important;
+        }
+        /* Stack logo and tagline vertically on mobile, but still left-aligned and no gap between them when stacked? 
+         Actually when stacked, they are separate rows, so no horizontal gap issue. */
+        .logo-tagline-row {
+          display: block !important;
+          width: 100% !important;
+        }
+        .logo-cell-mobile {
+          display: block !important;
+          width: 100% !important;
+          text-align: left !important;
+          padding-bottom: 4px !important;
+        }
+        .tagline-cell-mobile {
+          display: block !important;
+          width: 100% !important;
+          border-left: 1px solid #000 !important;
+          border-top: none !important;
+          border-right: 1px solid #000 !important;
+          border-bottom: 1px solid #000 !important;
+          margin-top: 2px !important;
+          padding: 4px 6px 4px 0 !important;
+          text-align: left !important;
+        }
+      }
+    </style>
   </head>
-
   <body
     style="
       margin: 0;
-      padding: 20px;
+      padding: 12px;
+      background: #fff;
       font-family: &quot;Courier New&quot;, Courier, monospace;
       color: #000000;
     "
   >
+    <!-- Outer table: left-aligned, no centering, max-width for readability, border-collapse to kill any spacing -->
     <table
       cellpadding="0"
       cellspacing="0"
       border="0"
-      width="700"
+      width="100%"
       style="
+        max-width: 560px;
+        width: 100%;
+        background: #ffffff;
         color: #000000;
         font-family: &quot;Courier New&quot;, Courier, monospace;
+        border-collapse: collapse;
       "
     >
-      <!-- GREETING -->
       <tr>
-        <td style="font-size: 18px; color: #000000; padding-bottom: 8px">
-          Warm Regards
-        </td>
-      </tr>
-
-      <!-- LOGO + TAGLINE -->
-      <tr>
-        <td style="padding-bottom: 10px">
-          <table cellpadding="0" cellspacing="0" border="0">
+        <td style="padding: 0">
+          <!-- GREETING -->
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            width="100%"
+            style="border-collapse: collapse"
+          >
             <tr>
-              <td style="padding: 0; width: 130px; height: 20px">
+              <td
+                style="
+                  font-size: 16px;
+                  color: #000000;
+                  padding-bottom: 5px;
+                  font-weight: 500;
+                  text-align: left;
+                "
+              >
+                Warm Regards
+              </td>
+            </tr>
+          </table>
+
+          <!-- LOGO + TAGLINE - STRICTLY NO SPACE between logo and tagline box -->
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            width="100%"
+            style="border-collapse: collapse; width:68%"
+          >
+            <tr class="logo-tagline-row">
+              <!-- Logo cell: zero padding, zero margin, image touches right edge -->
+              <td
+                class="logo-cell-mobile"
+                style="
+                  padding: 0;
+                  margin: 0;
+                  vertical-align: middle;
+                  line-height: 0;
+                  width: auto;
+                  text-align: left;
+                "
+              >
                 <img
                   src="https://www.clearerpay.com/clearer.png"
                   alt="Clearer"
-                  width="180"
-                  style="display: block"
+                  class="logo-img"
+                  style="
+                    display: block;
+                    width: 140px;
+                    max-width: 140px;
+                    height: auto;
+                    border: 0;
+                    margin: 0;
+                  "
+                  width="140"
                 />
               </td>
-
+              <!-- Tagline cell: left padding set to 0 to eliminate gap, borders on top/right/bottom only (no left border) so it attaches directly to the logo -->
               <td
+                class="tagline-cell-mobile"
                 style="
                   border-top: 1px solid #000;
                   border-right: 1px solid #000;
                   border-bottom: 1px solid #000;
-                  padding: 0 8px;
-                  width: 320px;
+                  background: #fff;
+                  vertical-align: middle;
                   color: #78b60f;
-                  font-size: 18px;
+                  font-size: 14px;
                   font-weight: bold;
-                  line-height: 30px;
-                  letter-spacing: 1px;
+                  line-height: 1.35;
+                  letter-spacing: 0.5px;
+                  text-align: left;
                 "
               >
-                POWERING GLOBAL COMMERCE &
-                <br />
-                PAYMENT RAILS
+                POWERING GLOBAL COMMERCE &amp;<br />PAYMENT RAILS
               </td>
             </tr>
           </table>
-        </td>
-      </tr>
 
-      <!-- NAME -->
-      <tr>
-        <td
-          style="
-            font-size: 16px;
-            font-weight: bold;
-            color: black;
-            padding-bottom: 8px;
-          "
-        >
-          TAIWO ADEGBOYE – ACCOUNT EXECUTIVE
-        </td>
-      </tr>
-
-      <!-- PHONE -->
-      <tr>
-        <td style="font-size: 16px; padding-bottom: 4px">
-          <strong>T</strong>
-
-          <a
-            href="tel:+2349139688610"
-            style="color: #ff4ea3; text-decoration: underline"
+          <!-- NAME - compact left -->
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            width="100%"
+            style="border-collapse: collapse; margin-top: 6px"
           >
-            +234 913 968 8610
-          </a>
-        </td>
-      </tr>
-
-      <!-- WEBSITE -->
-      <tr>
-        <td style="font-size: 16px; padding-bottom: 25px">
-          <strong>W</strong>
-
-          <a
-            href="https://www.clearer.eu"
-            style="color: #9ad1ff; text-decoration: underline"
-          >
-            http://www.clearer.eu/
-          </a>
-        </td>
-      </tr>
-
-      <!-- FLAGS - CIRCULAR (using wrapper divs with overflow hidden & border-radius) -->
-      <tr>
-        <td style="padding-bottom: 40px">
-          <table cellpadding="0" cellspacing="0" border="0">
             <tr>
-              <!-- Estonia -->
-              <td valign="top" style="padding-right: 14px">
-                <div
-                  style="
-                    width: 35px;
-                    height: 35px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    background: #f0f0f0;
-                  "
-                >
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Flag_of_Estonia.svg"
-                    alt="Estonia"
-                    style="
-                      width: 100%;
-                      height: 100%;
-                      display: block;
-                      object-fit: cover;
-                    "
-                  />
-                </div>
-              </td>
-              <!-- Canada -->
-              <td valign="top" style="padding-right: 14px">
-                <div
-                  style="
-                    width: 35px;
-                    height: 35px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    background: #f0f0f0;
-                  "
-                >
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/en/c/cf/Flag_of_Canada.svg"
-                    alt="Canada"
-                    style="
-                      width: 100%;
-                      height: 100%;
-                      display: block;
-                      object-fit: cover;
-                    "
-                  />
-                </div>
-              </td>
-              <!-- Nigeria -->
-              <td valign="top" style="padding-right: 14px">
-                <div
-                  style="
-                    width: 35px;
-                    height: 35px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    background: #f0f0f0;
-                  "
-                >
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg"
-                    alt="Nigeria"
-                    style="
-                      width: 100%;
-                      height: 100%;
-                      display: block;
-                      object-fit: cover;
-                    "
-                  />
-                </div>
-              </td>
-              <!-- United Kingdom -->
-              <td valign="top">
-                <div
-                  style="
-                    width: 35px;
-                    height: 35px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    background: #f0f0f0;
-                  "
-                >
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg"
-                    alt="United Kingdom"
-                    style="
-                      width: 100%;
-                      height: 100%;
-                      display: block;
-                      object-fit: cover;
-                    "
-                  />
-                </div>
+              <td
+                style="
+                  font-size: 14px;
+                  font-weight: bold;
+                  color: #000000;
+                  padding-bottom: 5px;
+                  letter-spacing: -0.2px;
+                  text-align: left;
+                "
+              >
+                TAIWO ADEGBOYE – ACCOUNT EXECUTIVE
               </td>
             </tr>
           </table>
-        </td>
-      </tr>
 
-      <!-- DISCLAIMER -->
-      <tr>
-        <td style="font-size: 14px; line-height: 24px; color: #000000">
-          <strong>
-            <u>DISCLAIMER:</u>
-          </strong>
-
-          The data contained in, or attached to this E-mail may contain
-          Confidential, Restricted, or Security Sensitive Information and is
-          intended for the recipient only.
-
-          <br /><br />
-
-          If the Information is Restricted or contains Security Sensitive
-          Information and you do not have a "need to know" you must not use,
-          disclose, distribute, copy, print or read the content of the data or
-          its attachments. If an addressing or transmission error has
-          misdirected this email and you are not the intended recipient, please
-          notify the author immediately by replying to this
-
-          <a
-            href="mailto:hello@clearer.eu"
-            style="color: #9ad1ff; text-decoration: underline"
+          <!-- PHONE -->
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            width="100%"
+            style="border-collapse: collapse"
           >
-            hello@clearer.eu
-          </a>
+            <tr>
+              <td
+                style="font-size: 14px; padding-bottom: 3px; text-align: left"
+              >
+                <strong>T</strong>
+                <a
+                  href="tel:+2349139688610"
+                  style="
+                    color: #ff4ea3;
+                    text-decoration: underline;
+                    font-weight: 500;
+                  "
+                  >+234 913 968 8610</a
+                >
+              </td>
+            </tr>
+          </table>
+
+          <!-- WEBSITE -->
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            width="100%"
+            style="border-collapse: collapse"
+          >
+            <tr>
+              <td
+                class="website-link"
+                style="font-size: 14px; padding-bottom: 18px; text-align: left"
+              >
+                <strong>W</strong>
+                <a
+                  href="https://www.clearer.eu"
+                  style="
+                    color: #9ad1ff;
+                    text-decoration: underline;
+                    word-break: break-all;
+                  "
+                  >http://www.clearer.eu/</a
+                >
+              </td>
+            </tr>
+          </table>
+
+          <!-- FLAGS - circular, left-aligned, compact circles -->
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            width="100%"
+            style="border-collapse: collapse"
+          >
+            <tr>
+              <td
+                class="flags-wrapper"
+                style="padding-bottom: 26px; text-align: left"
+              >
+                <table
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="border-collapse: collapse; margin: 0; padding: 0"
+                >
+                  <tr>
+                    <!-- Estonia -->
+                    <td
+                      class="flag-cell"
+                      valign="top"
+                      style="padding-right: 12px"
+                    >
+                      <div
+                        style="
+                          width: 32px;
+                          height: 32px;
+                          border-radius: 50%;
+                          overflow: hidden;
+                          background: #f0f0f0;
+                          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+                        "
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Flag_of_Estonia.svg"
+                          alt="Estonia"
+                          style="
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                            object-fit: cover;
+                          "
+                        />
+                      </div>
+                    </td>
+                    <!-- Canada -->
+                    <td
+                      class="flag-cell"
+                      valign="top"
+                      style="padding-right: 12px"
+                    >
+                      <div
+                        style="
+                          width: 32px;
+                          height: 32px;
+                          border-radius: 50%;
+                          overflow: hidden;
+                          background: #f0f0f0;
+                        "
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/en/c/cf/Flag_of_Canada.svg"
+                          alt="Canada"
+                          style="
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                            object-fit: cover;
+                          "
+                        />
+                      </div>
+                    </td>
+                    <!-- Nigeria -->
+                    <td
+                      class="flag-cell"
+                      valign="top"
+                      style="padding-right: 12px"
+                    >
+                      <div
+                        style="
+                          width: 32px;
+                          height: 32px;
+                          border-radius: 50%;
+                          overflow: hidden;
+                          background: #f0f0f0;
+                        "
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg"
+                          alt="Nigeria"
+                          style="
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                            object-fit: cover;
+                          "
+                        />
+                      </div>
+                    </td>
+                    <!-- United Kingdom -->
+                    <td class="flag-cell" valign="top">
+                      <div
+                        style="
+                          width: 32px;
+                          height: 32px;
+                          border-radius: 50%;
+                          overflow: hidden;
+                          background: #f0f0f0;
+                        "
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg"
+                          alt="United Kingdom"
+                          style="
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                            object-fit: cover;
+                          "
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+
+          <!-- DISCLAIMER - smaller font, left aligned -->
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            width="100%"
+            style="border-collapse: collapse"
+          >
+            <tr>
+              <td
+                class="disclaimer-text"
+                style="
+                  font-size: 12px;
+                  line-height: 1.45;
+                  color: #000000;
+                  text-align: left;
+                "
+              >
+                <strong><u>DISCLAIMER:</u></strong> The data contained in, or
+                attached to this E-mail may contain Confidential, Restricted, or
+                Security Sensitive Information and is intended for the recipient
+                only. <br /><br />
+                If the Information is Restricted or contains Security Sensitive
+                Information and you do not have a "need to know" you must not
+                use, disclose, distribute, copy, print or read the content of
+                the data or its attachments. If an addressing or transmission
+                error has misdirected this email and you are not the intended
+                recipient, please notify the author immediately by replying to
+                this
+                <a
+                  href="mailto:hello@clearer.eu"
+                  style="color: #9ad1ff; text-decoration: underline"
+                  >hello@clearer.eu</a
+                >
+              </td>
+            </tr>
+          </table>
         </td>
       </tr>
     </table>
   </body>
 </html>
-
