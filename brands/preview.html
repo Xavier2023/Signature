@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clearer Group – Master Signatures</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        margin: 0;
+        padding: 32px;
+        font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f4f5f6;
+        color: #111;
+      }
+      h1 { font-size: 20px; margin: 0 0 4px; letter-spacing: -0.3px; }
+      .sub { color: #6b7280; margin: 0 0 24px; font-size: 13px; }
+      .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(680px, 1fr)); }
+      .card { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; background: #fff; }
+      .card h2 {
+        font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+        margin: 0; padding: 10px 14px; background: #fafafa;
+        border-bottom: 1px solid #e5e7eb; color: #6b7280;
+      }
+      .panes { display: grid; grid-template-columns: 1fr 1fr; }
+      .pane { min-height: 520px; }
+      .pane + .pane { border-left: 1px solid #e5e7eb; }
+      .pane.dark { background: #1b1d1f; }
+      .tag {
+        font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+        padding: 6px 14px; color: #9ca3af;
+      }
+      iframe { width: 100%; height: 520px; border: 0; display: block; }
+      .setbtn {
+        font: inherit; padding: 7px 14px; margin-right: 8px; cursor: pointer;
+        border: 1px solid #d4d7db; background: #fff; border-radius: 7px; color: #374151;
+      }
+      .setbtn.on { background: #111; color: #fff; border-color: #111; }
+      code { background: #eceef0; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>Clearer Group — master email signatures</h1>
+    <p class="sub">
+      Leaf mark is a hosted transparent PNG; the wordmark is live HTML text, so it
+      flips black&nbsp;→&nbsp;white in dark mode. Left pane = light, right pane = dark.
+      Replace <code>FULL NAME – JOB TITLE</code> per person.
+    </p>
+    <p style="margin: 0 0 20px">
+      <button data-set="." class="setbtn">Brand masters</button>
+      <button data-set="../people/lucky-koiza-oyanna" class="setbtn">Lucky Koiza Oyanna</button>
+      <button data-set="../people/charles-ike" class="setbtn">Charles Ike</button>
+      <button data-set="../people/taiwo-adegboye" class="setbtn">Taiwo Adegboye</button>
+      <button data-set="../people/gift-eboigbe" class="setbtn">Gift Eboigbe</button>
+      <button data-set="../people/ajibola-bamisaye" class="setbtn">Ajibola Bamisaye</button>
+    </p>
+    <div class="grid" id="grid"></div>
+    <script>
+      const brands = [
+        ["Clearer", "clearer.html"],
+        ["Clearer AE", "clearer-ae.html"],
+        ["Clearerpay", "clearerpay.html"],
+        ["Clearer Metals", "clearermetals.html"],
+        ["Clearer Outsourcing", "clearer-outsourcing.html"],
+        ["Swetche", "swetche.html"],
+        ["Frirosa", "frirosa.html"],
+      ];
+      let base = ".";
+      function draw() {
+      document.getElementById("grid").innerHTML = brands
+        .map(
+          ([name, file]) => `
+        <div class="card">
+          <h2>${name} — ${file}</h2>
+          <div class="panes">
+            <div class="pane"><div class="tag">Light</div><iframe src="${base}/${file}"></iframe></div>
+            <div class="pane dark"><div class="tag">Dark</div><iframe src="${base}/${file}"></iframe></div>
+          </div>
+        </div>`
+        )
+        .join("");
+      }
+      draw();
+      document.querySelectorAll(".setbtn").forEach((b) => {
+        b.onclick = () => {
+          base = b.dataset.set;
+          document.querySelectorAll(".setbtn").forEach((x) => x.classList.remove("on"));
+          b.classList.add("on");
+          draw();
+        };
+      });
+      document.querySelector(".setbtn").classList.add("on");
+    </script>
+  </body>
+</html>
