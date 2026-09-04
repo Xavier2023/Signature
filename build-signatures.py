@@ -23,44 +23,9 @@ MARK_FRIROSA = "https://www.frirosa.com/logo512x512.png"
 SANS = "Nunito, 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 MONO = "'Courier New', Courier, monospace"
 
-# (country code, [lines]) -- entity and licence live in the lines, per index.html
-BRANDS = [
- dict(
-  key="clearer", file="clearer.html", title="Clearer",
-  mark="https://www.clearer.ae/sig-clearer.png",
-  dark_mark="https://www.clearer.ae/sig-clearer-dark.png",
-  mark_w=175, mark_h=68,
-  word="clearer", suffix="", tm=True, accent="#78b60f", accent_dark="#a3e635",
-  services=["International Trade Facilitation", "Trade Compliance", "Freight Services"],
-  phone="+232 074 605 659", wa="", email="hello@clearer.ae",
-  web="https://www.clearer.ae/", weburl="https://www.clearer.ae",
-  offices=[
-    ("ee", ["Kuklase tn 15-37",
-            "13423 Tallinn, Estonia",
-            "US MSB &amp; EUROPEAN EMI LICENCE"]),
-    ("ca", ["22 Lorne Place 102",
-            "Regina SK S4R 8B3, Canada",
-            "FINTRAC MSB REG: C100000072"]),
-    ("gb", ["20 Aylestone Drive",
-            "Leicester, England, LE2 8QD",
-            "UK EMI LICENCE: IN PROGRESS"]),
-    ("ng", ["Property Gate Centre",
-            "2 The Rock Drive, Lekki Phase 1",
-            "Lagos, Nigeria"]),
-  ],
-  partners=[]),
-
- dict(
-  # Same content as Clearer, plus the Dubai office -- this is the UAE arm.
-  key="clearerae", file="clearer-ae.html", title="Clearer AE",
-  mark="https://www.clearer.ae/sig-clearer.png",
-  dark_mark="https://www.clearer.ae/sig-clearer-dark.png",
-  mark_w=175, mark_h=68,
-  word="clearer", suffix="", tm=True, accent="#78b60f", accent_dark="#a3e635",
-  services=["International Trade Facilitation", "Trade Compliance", "Freight Services"],
-  phone="+232 074 605 659", wa="", email="hello@clearer.ae",
-  web="https://www.clearer.ae/", weburl="https://www.clearer.ae",
-  offices=[
+# The group's offices, UAE first. Clearer, Clearer AE and ClearerPay all carry
+# the full list; Clearer Metals is Dubai-only and keeps its own address.
+ALL_OFFICES = [
     ("ae", ["158, Al Hebiah Third",
             "Dubai, United Arab Emirates"]),
     ("ee", ["Kuklase tn 15-37",
@@ -73,54 +38,74 @@ BRANDS = [
             "Leicester, England, LE2 8QD",
             "UK EMI LICENCE: IN PROGRESS"]),
     ("ng", ["Property Gate Centre",
-            "2 The Rock Drive, Lekki Phase 1",
-            "Lagos, Nigeria"]),
-  ],
+            "2 The Rock Drive",
+            "Lekki Phase 1, Lagos, Nigeria"]),
+]
+
+# (country code, [lines]) -- entity and licence live in the lines, per index.html
+BRANDS = [
+ dict(
+  key="clearer", file="clearer.html", title="Clearer",
+  mark="https://www.clearer.ae/sig-clearer.png",
+  dark_mark="https://www.clearer.ae/sig-clearer-dark.png",
+  mark_w=149, mark_h=58,
+  word="clearer", suffix="", tm=True, accent="#78b60f", accent_dark="#a3e635",
+  services=["International Trade Facilitation", "Trade Compliance", "Freight Services"],
+  phone="+232 074 605 659", wa="", email="hello@clearer.ae",
+  web="https://www.clearer.ae/", weburl="https://www.clearer.ae",
+  offices=ALL_OFFICES,
+  partners=[]),
+
+ dict(
+  # Same content as Clearer -- this is the UAE arm.
+  key="clearerae", file="clearer-ae.html", title="Clearer AE",
+  mark="https://www.clearer.ae/sig-clearer.png",
+  dark_mark="https://www.clearer.ae/sig-clearer-dark.png",
+  mark_w=149, mark_h=58,
+  word="clearer", suffix="", tm=True, accent="#78b60f", accent_dark="#a3e635",
+  services=["International Trade Facilitation", "Trade Compliance", "Freight Services"],
+  phone="+232 074 605 659", wa="", email="hello@clearer.ae",
+  web="https://www.clearer.ae/", weburl="https://www.clearer.ae",
+  offices=ALL_OFFICES,
   partners=[]),
 
  dict(
   key="clearerpay", file="clearerpay.html", title="ClearerPay",
   mark="https://www.clearerpay.com/sig-clearerpay.png",
   dark_mark="https://www.clearerpay.com/sig-clearerpay-dark.png",
-  mark_w=200, mark_h=57,
+  mark_w=170, mark_h=48,
   word="Clearer", suffix="Pay", two_weight=True, tm=False,
   accent="#78b60f", accent_dark="#a3e635",
   services=["E-Collections &amp; Settlements", "Trade Finance", "E-Invoicing"],
   phone="+234 803 418 4304", wa="+372 5392 2010", email="support@clearerpay.com",
   web="https://www.clearerpay.com/", weburl="https://www.clearerpay.com",
-  offices=[
-    ("ca", ["22 Lorne Place 102",
-            "Regina SK S4R 8B3, Canada",
-            "FINTRAC MSB REG: C100000072"]),
-  ],
+  offices=ALL_OFFICES,
   partners=[]),
 
  dict(
   key="clearermetals", file="clearermetals.html", title="Clearer Metals",
   mark="https://www.clearer.ae/sig-metals.png",
   dark_mark="https://www.clearer.ae/sig-metals-dark.png",
-  mark_w=190, mark_h=80,
+  mark_w=162, mark_h=68,
   word="clearer", suffix="Metals", tm=False,
   accent="#6b7f3a", accent_dark="#c3d98a",
   services=["Solid Minerals", "Petroleum Products", "Metals &amp; Precious Stones"],
   phone="+971 50 501 9566", wa="+971 50 501 9566", email="hello@clearer.ae",
   web="https://www.clearer.ae/", weburl="https://www.clearer.ae",
-  offices=[
-    ("ae", ["2B125B, Al Hebiah Third",
-            "Dubai, United Arab Emirates"]),
-  ],
+  # Dubai only, and it is the same address as the rest of the group.
+  offices=ALL_OFFICES[:1],
   # Accreditation logos kept exactly as they are in mdclearermetal.html.
   partners=[("https://www.dubaichambers.com/documents/d/global/dubai-chamber-logo",
-             "Dubai Chamber", 40),
+             "Dubai Chamber", 34),
             ("https://www.dubaidet.gov.ae/en/-/media/common/logos/revised/"
-             "dubai-det-flag-logo.svg?h=47&amp;iar=0&amp;w=75", "Dubai DET", 60)]),
+             "dubai-det-flag-logo.svg?h=47&amp;iar=0&amp;w=75", "Dubai DET", 51)]),
 
  dict(
   key="cleareroutsourcing", file="clearer-outsourcing.html",
   title="Clearer Outsourcing",
   mark="https://www.clearer.ae/sig-outsourcing.png",
   dark_mark="https://www.clearer.ae/sig-outsourcing-dark.png",
-  mark_w=112, mark_h=79,
+  mark_w=95, mark_h=67,
   word="clearer", suffix="outsourcing", tm=False,
   accent="#78b60f", accent_dark="#a3e635",
   services=["Import &amp; Export", "Supply Chain", "Trade Finance", "Distribution"],
@@ -129,8 +114,8 @@ BRANDS = [
   weburl="https://www.cleareroutsourcing.com",
   offices=[
     ("ng", ["Property Gate Centre",
-            "2 The Rock Drive, Lekki Phase 1",
-            "Lagos, Nigeria"]),
+            "2 The Rock Drive",
+            "Lekki Phase 1, Lagos, Nigeria"]),
     ("ee", ["Kuklase tn 15-37",
             "13423 Tallinn, Estonia"]),
     ("gb", ["20 Aylestone Drive",
@@ -144,7 +129,7 @@ BRANDS = [
   key="swetche", file="swetche.html", title="Swetche",
   mark="https://www.swetche.com/sig-swetche.png",
   dark_mark="https://www.swetche.com/sig-swetche-dark.png",
-  mark_w=200, mark_h=29,
+  mark_w=170, mark_h=25,
   word="swetche", suffix="", dot=True, tm=False,
   accent="#22c55e", accent_dark="#4ade80",
   services=["Remittance", "Foreign Exchange", "Multicurrency Accounts"],
@@ -152,8 +137,8 @@ BRANDS = [
   web="https://www.swetche.com/", weburl="https://www.swetche.com",
   offices=[
     ("ng", ["PropertyGate Centre",
-            "2 The Rock Drive, Lekki Phase 1",
-            "Lagos, Nigeria",
+            "2 The Rock Drive",
+            "Lekki Phase 1, Lagos, Nigeria",
             "CBN IMTO LICENCE"]),
     ("ca", ["1304-15 Greenview Ave",
             "Toronto, ON M2M 4M7, Canada",
@@ -165,7 +150,7 @@ BRANDS = [
   key="frirosa", file="frirosa.html", title="Frirosa",
   mark="https://www.frirosa.com/frirosa-logo-dark.png",
   dark_mark="https://www.frirosa.com/frirosa-logo.png",
-  mark_w=145, mark_h=67,
+  mark_w=123, mark_h=57,
   word="frirosa", suffix="", tm=False,
   accent="#e0b400", accent_dark="#ffd84d",
   services=["Bureau De Change", "Foreign Exchange"],
@@ -173,8 +158,8 @@ BRANDS = [
   web="https://www.frirosa.com/", weburl="https://www.frirosa.com",
   offices=[
     ("ng", ["Property Gate Centre",
-            "2 The Rock Drive, Lekki Phase 1",
-            "Lagos, Nigeria",
+            "2 The Rock Drive",
+            "Lekki Phase 1, Lagos, Nigeria",
             "CBN LICENCE: 000246"]),
   ],
   partners=[]),
@@ -362,6 +347,12 @@ PEOPLE = [
   slug="ajibola-bamisaye",
   name="AJIBOLA O. BAMISAYE &#8211; COMPLIANCE &amp; RISK OFFICER",
   contact=dict(phone="+234 707 468 3810", wa="")),
+
+ dict(
+  slug="joy-sanyu",
+  name="JOY SANYU &#8211; ACTING COUNTRY MANAGER (UAE)",
+  name_first=True,
+  contact=dict(phone="+971 58 123 0770", wa="+971 58 123 0770")),
 ]
 
 
