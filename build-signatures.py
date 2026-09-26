@@ -325,7 +325,9 @@ PEOPLE = [
     # From signature.html -- his ClearerPay line.
     "clearerpay": dict(phone="+234 803 418 4304", wa="+372 5392 2010"),
     # From mdclearermetal.html -- his Dubai line.
-    "clearermetals": dict(phone="+971 50 501 9566", wa="+971 50 501 9566"),
+    "clearermetals": dict(phone="+971 50 501 9566", wa="+971 50 501 9566",
+                          web="https://www.clearermetals.com/",
+                          weburl="https://www.clearermetals.com/"),
   }),
 
  dict(
@@ -353,6 +355,30 @@ PEOPLE = [
   name="JOY SANYU &#8211; ACTING COUNTRY MANAGER (UAE)",
   name_first=True,
   contact=dict(phone="+971 58 123 0770", wa="+971 58 123 0770")),
+
+ dict(
+  slug="oluwasegun-olajumoke",
+  name="OLUWASEGUN OLAJUMOKE &#8211; TRADING OFFICER",
+  name_first=True,
+  contact=dict(phone="+234 707 468 4125", wa="+234 707 468 4125")),
+
+ dict(
+  slug="orjinta-onyedikachi-anthony",
+  name="ORJINTA ONYEDIKACHI ANTHONY &#8211; FRONTEND ENGINEER",
+  name_first=True,
+  contact=dict(phone="+234 913 094 7049", wa="")),
+
+ dict(
+  slug="emmanuel-jaiyeola",
+  name="EMMANUEL JAIYEOLA &#8211; GOVERNANCE AND ONBOARDING OFFICER",
+  name_first=True,
+  contact=dict(phone="+234 916 832 0775", wa="+234 916 832 0775")),
+
+ dict(
+  slug="jane-cavarlho",
+  name="JANE CAVARLHO &#8211; PERSONAL MANAGER / INTERN",
+  name_first=True,
+  contact=dict(phone="+971 50 157 7944", wa="+971 50 157 7944")),
 ]
 
 
