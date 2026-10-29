@@ -261,6 +261,13 @@ def contact(b):
             'border: 0; vertical-align: middle" /></a>'
             % (wa_href, WHATSAPP_ICON, b["wa"]))
 
+    second = "          %s %s" % (glyph("globe--v1", "Website"),
+                                    link(b["weburl"], b["web"]))
+    # No phone (someone without a number yet) drops the whole first line,
+    # WhatsApp included, leaving just the website.
+    if not b["phone"]:
+        return second
+
     first = "          %s %s" % (glyph("phone", "Phone"), link(
         "tel:" + b["phone"].replace(" ", ""), b["phone"]))
     if b["wa"]:
@@ -269,8 +276,6 @@ def contact(b):
         if b.get("wa_raw_link"):
             first += " " + link(wa_href, wa_href)
 
-    second = "          %s %s" % (glyph("globe--v1", "Website"),
-                                    link(b["weburl"], b["web"]))
     # Spacer block rather than a <br /> so the number and website lines
     # get a visible gap in every email client.
     gap = ('<div style="height: 10px; line-height: 10px; font-size: 10px">'
@@ -421,6 +426,13 @@ PEOPLE = [
   name="AJIBOLA O. BAMISAYE &#8211; RISK AND COMPLIANCE MANAGER",
   name_first=True,
   contact=dict(phone="+234 707 468 3810", wa="+234 707 468 3810")),
+
+ dict(
+  slug="joshua-ayanda",
+  name="JOSHUA AYANDA &#8211; RISK AND COMPLIANCE OFFICER",
+  name_first=True,
+  # No phone or WhatsApp yet -- website line only. Add them here when issued.
+  contact=dict(phone="", wa="")),
 
  dict(
   slug="joy-sanyu",
