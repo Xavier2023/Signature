@@ -19,9 +19,23 @@ LEAF_METAL = ("https://www.clearer.ae/"
 LEAF_OUTSOURCING = "https://www.cleareroutsourcing.com/logo.png"
 MARK_SWETCHE = "https://www.swetche.com/logo512x512.png"
 MARK_FRIROSA = "https://www.frirosa.com/logo512x512.png"
+# WhatsApp glyph shown in place of the WA number; links to the wa.me DM.
+WHATSAPP_ICON = "https://img.icons8.com/color/48/whatsapp--v1.png"
+# Phone and globe glyphs replace the T and W labels, tinted per brand.
+ICON_URL = "https://img.icons8.com/ios-filled/50/%s/%s.png"
+
+# Regulator marks for Swetche, from Wikimedia.
+CBN_LOGO = ("https://upload.wikimedia.org/wikipedia/en/thumb/3/35/"
+            "Central_Bank_of_Nigeria_logo.svg/"
+            "120px-Central_Bank_of_Nigeria_logo.svg.png")
+FINTRAC_LOGO = ("https://upload.wikimedia.org/wikipedia/commons/thumb/"
+                "c/c7/FINTRAC_Logo.png/330px-FINTRAC_Logo.png")
 
 SANS = "Nunito, 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 MONO = "'Courier New', Courier, monospace"
+
+# Logos and accreditation marks render at this fraction of their listed size.
+LOGO_SCALE = 0.8
 
 # The group's offices, UAE first. Clearer, Clearer AE and ClearerPay all carry
 # the full list; Clearer Metals is Dubai-only and keeps its own address.
@@ -32,15 +46,16 @@ ALL_OFFICES = [
             "13423 Tallinn, Estonia",
             "US MSB &amp; EUROPEAN EMI LICENCE"]),
     ("ca", ["22 Lorne Place 102",
-            "Regina SK S4R 8B3, Canada",
-            "FINTRAC MSB REG: C100000072"]),
+            "Regina SK S4R 8B3, Canada"]),
     ("gb", ["20 Aylestone Drive",
-            "Leicester, England, LE2 8QD",
-            "UK EMI LICENCE: IN PROGRESS"]),
+            "Leicester, England, LE2 8QD"]),
     ("ng", ["Property Gate Centre",
             "2 The Rock Drive",
             "Lekki Phase 1, Lagos, Nigeria"]),
 ]
+
+# Clearer and Clearer Metals list only the Dubai office.
+DUBAI_OFFICE = ALL_OFFICES[:1]
 
 # (country code, [lines]) -- entity and licence live in the lines, per index.html
 BRANDS = [
@@ -48,12 +63,13 @@ BRANDS = [
   key="clearer", file="clearer.html", title="Clearer",
   mark="https://www.clearer.ae/sig-clearer.png",
   dark_mark="https://www.clearer.ae/sig-clearer-dark.png",
-  mark_w=149, mark_h=58,
+  # Clearer Group logo, 1000x311.
+  mark_w=230, mark_h=72,
   word="clearer", suffix="", tm=True, accent="#78b60f", accent_dark="#a3e635",
-  services=["International Trade Facilitation", "Trade Compliance", "Freight Services"],
+  services=["Trade Finance", "Intelligent Procurement", "Payments"],
   phone="+232 074 605 659", wa="", email="hello@clearer.ae",
   web="https://www.clearer.ae/", weburl="https://www.clearer.ae",
-  offices=ALL_OFFICES,
+  offices=DUBAI_OFFICE,
   partners=[]),
 
  dict(
@@ -61,12 +77,16 @@ BRANDS = [
   key="clearerae", file="clearer-ae.html", title="Clearer AE",
   mark="https://www.clearer.ae/sig-clearer.png",
   dark_mark="https://www.clearer.ae/sig-clearer-dark.png",
-  mark_w=149, mark_h=58,
+  # Clearer Group logo, 1000x311.
+  mark_w=230, mark_h=72,
   word="clearer", suffix="", tm=True, accent="#78b60f", accent_dark="#a3e635",
-  services=["International Trade Facilitation", "Trade Compliance", "Freight Services"],
+  services=["Trade Finance", "Intelligent Procurement", "Payments"],
   phone="+232 074 605 659", wa="", email="hello@clearer.ae",
   web="https://www.clearer.ae/", weburl="https://www.clearer.ae",
   offices=ALL_OFFICES,
+  # Clearer AE signatures show the office flags only, no addresses
+  # (as Elohor's). Applies to the master and every person's version.
+  flags_only=True,
   partners=[]),
 
  dict(
@@ -76,10 +96,11 @@ BRANDS = [
   mark_w=170, mark_h=48,
   word="Clearer", suffix="Pay", two_weight=True, tm=False,
   accent="#78b60f", accent_dark="#a3e635",
-  services=["E-Collections &amp; Settlements", "Trade Finance", "E-Invoicing"],
+  services=["Payments", "E-Collections &amp; Settlements", "E-Invoicing"],
   phone="+234 803 418 4304", wa="+372 5392 2010", email="support@clearerpay.com",
   web="https://www.clearerpay.com/", weburl="https://www.clearerpay.com",
-  offices=ALL_OFFICES,
+  # Canada only.
+  offices=[o for o in ALL_OFFICES if o[0] == "ca"],
   partners=[]),
 
  dict(
@@ -90,10 +111,9 @@ BRANDS = [
   word="clearer", suffix="Metals", tm=False,
   accent="#6b7f3a", accent_dark="#c3d98a",
   services=["Solid Minerals", "Petroleum Products", "Metals &amp; Precious Stones"],
-  phone="+971 50 501 9566", wa="+971 50 501 9566", email="hello@clearer.ae",
-  web="https://www.clearer.ae/", weburl="https://www.clearer.ae",
-  # Dubai only, and it is the same address as the rest of the group.
-  offices=ALL_OFFICES[:1],
+  phone="+971 50 501 9566", wa="+971 50 501 9566", email="hello@clearermetals.com",
+  web="https://www.clearermetals.com/", weburl="https://www.clearermetals.com/",
+  offices=DUBAI_OFFICE,
   # Accreditation logos kept exactly as they are in mdclearermetal.html.
   partners=[("https://www.dubaichambers.com/documents/d/global/dubai-chamber-logo",
              "Dubai Chamber", 34),
@@ -108,7 +128,7 @@ BRANDS = [
   mark_w=95, mark_h=67,
   word="clearer", suffix="outsourcing", tm=False,
   accent="#78b60f", accent_dark="#a3e635",
-  services=["Import &amp; Export", "Supply Chain", "Trade Finance", "Distribution"],
+  services=["Import &amp; Export", "Supply Chain", "Distribution"],
   phone="+232 074 605 659", wa="", email="hello@cleareroutsourcing.com",
   web="https://www.cleareroutsourcing.com/",
   weburl="https://www.cleareroutsourcing.com",
@@ -132,19 +152,20 @@ BRANDS = [
   mark_w=170, mark_h=25,
   word="swetche", suffix="", dot=True, tm=False,
   accent="#22c55e", accent_dark="#4ade80",
-  services=["Remittance", "Foreign Exchange", "Multicurrency Accounts"],
+  services=["Digital Asset Management", "Cross Border Remittances",
+            "Multicurrency Accounts"],
   phone="+234 8023 937 860", wa="", email="support@swetche.com",
   web="https://www.swetche.com/", weburl="https://www.swetche.com",
   offices=[
     ("ng", ["PropertyGate Centre",
             "2 The Rock Drive",
-            "Lekki Phase 1, Lagos, Nigeria",
-            "CBN IMTO LICENCE"]),
+            "Lekki Phase 1, Lagos, Nigeria"]),
     ("ca", ["1304-15 Greenview Ave",
-            "Toronto, ON M2M 4M7, Canada",
-            "FINTRAC MSB REG: M23503773"]),
+            "Toronto, ON M2M 4M7, Canada"]),
   ],
-  partners=[]),
+  # Regulators, on their own row after the disclaimer.
+  partners=[(CBN_LOGO, "Central Bank of Nigeria", 64),
+            (FINTRAC_LOGO, "FINTRAC", 60)]),
 
  dict(
   key="frirosa", file="frirosa.html", title="Frirosa",
@@ -153,16 +174,16 @@ BRANDS = [
   mark_w=123, mark_h=57,
   word="frirosa", suffix="", tm=False,
   accent="#e0b400", accent_dark="#ffd84d",
-  services=["Bureau De Change", "Foreign Exchange"],
+  services=["Money Lending", "Travel Allowance", "Cash Point"],
   phone="+234 707 475 3808", wa="+234 707 475 3808", email="hello@frirosa.com",
   web="https://www.frirosa.com/", weburl="https://www.frirosa.com",
   offices=[
     ("ng", ["Property Gate Centre",
             "2 The Rock Drive",
-            "Lekki Phase 1, Lagos, Nigeria",
-            "CBN LICENCE: 000246"]),
+            "Lekki Phase 1, Lagos, Nigeria"]),
   ],
-  partners=[]),
+  # Regulator, on its own row after the disclaimer.
+  partners=[(CBN_LOGO, "Central Bank of Nigeria", 64)]),
 ]
 
 
@@ -202,16 +223,17 @@ def lockup(b):
     white, so the dark-text wordmark can never sit on a dark ground. That
     removes the need for a light/dark image swap entirely.
     """
+    w, h = round(b["mark_w"] * LOGO_SCALE), round(b["mark_h"] * LOGO_SCALE)
     mark = ('<img src="%s" alt="%s" width="%d" height="%d" '
             'style="display: block; width: %dpx; height: auto; border: 0" />'
-            % (b["mark"], b["title"], b["mark_w"], b["mark_h"], b["mark_w"]))
+            % (b["mark"], b["title"], w, h, w))
 
     return """          <table cellpadding="0" cellspacing="0" border="0">
             <tr>
               <td
                 align="center"
                 bgcolor="#ffffff"
-                style="background-color: #ffffff; border-radius: 10px; padding: 7px 11px"
+                style="background-color: #ffffff; border-radius: 8px; padding: 5px 9px"
               >
 %s
               </td>
@@ -220,33 +242,54 @@ def lockup(b):
 
 
 def contact(b):
-    """T and WA on one line, website on the next. No email line."""
+    """Phone and WA on one line, website on the next. No email line.
+    The phone always shows, even when WhatsApp uses the same number."""
+    def glyph(name, alt):
+        return ('<img src="%s" width="18" height="18" alt="%s" '
+                'style="display: inline-block; width: 18px; height: 18px; '
+                'border: 0; vertical-align: middle" />'
+                % (ICON_URL % (b["accent"].lstrip("#"), name), alt))
+
     def link(href, text):
         return ('<a href="%s" class="sig-link" style="color: %s; '
                 'text-decoration: underline">%s</a>' % (href, b["accent"], text))
 
-    first = "          <strong>T</strong> %s" % link(
-        "tel:" + b["phone"].replace(" ", ""), b["phone"])
-    if b["wa"]:
-        first += "&nbsp;&nbsp;&nbsp;<strong>WA</strong> %s" % link(
-            "https://wa.me/" + b["wa"].replace(" ", "").replace("+", ""), b["wa"])
+    wa_href = "https://wa.me/" + b["wa"].replace(" ", "").replace("+", "")
+    icon = ('<a href="%s" style="text-decoration: none"><img src="%s" '
+            'width="24" height="24" alt="WhatsApp" title="WhatsApp %s" '
+            'style="display: inline-block; width: 24px; height: 24px; '
+            'border: 0; vertical-align: middle" /></a>'
+            % (wa_href, WHATSAPP_ICON, b["wa"]))
 
-    second = "          <strong>W</strong> %s" % link(b["weburl"], b["web"])
-    return first + "\n          <br />\n" + second
+    first = "          %s %s" % (glyph("phone", "Phone"), link(
+        "tel:" + b["phone"].replace(" ", ""), b["phone"]))
+    if b["wa"]:
+        first += "&nbsp;&nbsp;&nbsp;" + icon
+        # `wa_raw_link` also shows the wa.me URL beside the icon.
+        if b.get("wa_raw_link"):
+            first += " " + link(wa_href, wa_href)
+
+    second = "          %s %s" % (glyph("globe--v1", "Website"),
+                                    link(b["weburl"], b["web"]))
+    # Spacer block rather than a <br /> so the number and website lines
+    # get a visible gap in every email client.
+    gap = ('<div style="height: 10px; line-height: 10px; font-size: 10px">'
+           '&nbsp;</div>')
+    return first + "\n          " + gap + "\n" + second
 
 
 def office_cell(cc, lines):
     """One office: circular flag + address, sized for a half-width column."""
-    return """              <td valign="top" width="300" style="width: 300px; padding-bottom: 14px">
+    return """              <td valign="top" width="290" style="width: 290px; padding-bottom: 10px">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
-                    <td valign="top" style="padding-right: 12px">
+                    <td valign="top" style="padding-right: 10px">
                       <img
                         src="https://www.clearer.ae/flags/%s.png"
                         alt="%s"
-                        width="35"
-                        height="35"
-                        style="width: 35px; height: 35px; display: block; border: 0"
+                        width="28"
+                        height="28"
+                        style="width: 28px; height: 28px; display: block; border: 0"
                       />
                     </td>
                     <td
@@ -267,20 +310,46 @@ def office_cell(cc, lines):
                           "<br />\n                      ".join(lines))
 
 
+def flags_only(b):
+    """Just the office flags in one row, for people who want no addresses."""
+    cells = "\n".join(
+        """              <td style="padding-right: 10px">
+                <img
+                  src="https://www.clearer.ae/flags/%s.png"
+                  alt="%s"
+                  width="28"
+                  height="28"
+                  style="width: 28px; height: 28px; display: block; border: 0"
+                />
+              </td>""" % (cc, cc.upper()) for cc, _ in b["offices"])
+    return """      <tr>
+        <td style="padding-bottom: 20px">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+%s
+            </tr>
+          </table>
+        </td>
+      </tr>
+""" % cells
+
+
 def offices(b):
     """Offices laid out two per row."""
+    if b.get("flags_only"):
+        return flags_only(b)
     items = b["offices"]
     rows = []
     for i in range(0, len(items), 2):
         pair = items[i:i + 2]
         cells = [office_cell(cc, lines) for cc, lines in pair]
         if len(pair) == 1:
-            cells.append('              <td width="300" style="width: 300px">&nbsp;</td>')
+            cells.append('              <td width="290" style="width: 290px">&nbsp;</td>')
         rows.append("            <tr>\n%s\n            </tr>" % "\n".join(cells))
 
     return """      <tr>
-        <td style="padding-bottom: 28px">
-          <table cellpadding="0" cellspacing="0" border="0" width="600">
+        <td style="padding-bottom: 20px">
+          <table cellpadding="0" cellspacing="0" border="0" width="580">
 %s
           </table>
         </td>
@@ -292,18 +361,19 @@ def partners(b):
     if not b["partners"]:
         return ""
     cells = "\n".join(
-        """              <td style="padding-right: 26px">
+        """              <td style="padding-right: 20px">
                 <img
                   src="%s"
                   alt="%s"
                   height="%d"
                   style="display: block; max-height: %dpx; border: 0"
                 />
-              </td>""" % (src, alt, h, h) for src, alt, h in b["partners"])
+              </td>""" % (src, alt, round(h * LOGO_SCALE), round(h * LOGO_SCALE))
+        for src, alt, h in b["partners"])
     return """
       <!-- ACCREDITATIONS -->
       <tr>
-        <td style="padding-top: 22px">
+        <td style="padding-top: 16px">
           <table cellpadding="0" cellspacing="0" border="0">
             <tr>
 %s
@@ -325,30 +395,32 @@ PEOPLE = [
     # From signature.html -- his ClearerPay line.
     "clearerpay": dict(phone="+234 803 418 4304", wa="+372 5392 2010"),
     # From mdclearermetal.html -- his Dubai line.
-    "clearermetals": dict(phone="+971 50 501 9566", wa="+971 50 501 9566",
-                          web="https://www.clearermetals.com/",
-                          weburl="https://www.clearermetals.com/"),
+    "clearermetals": dict(phone="+971 50 501 9566", wa="+971 50 501 9566"),
   }),
 
  dict(
   slug="charles-ike",
   name="CHARLES IKE &#8211; SENIOR DIGITAL GROWTH OFFICER",
-  contact=dict(phone="+234 805 468 3610", wa="")),
+  name_first=True,
+  contact=dict(phone="+234 805 468 3610", wa="+234 805 468 3610")),
 
  dict(
   slug="taiwo-adegboye",
   name="TAIWO ADEGBOYE &#8211; EXECUTIVE ASSISTANT TO THE CEO",
-  contact=dict(phone="+234 913 968 8610", wa="")),
+  name_first=True,
+  contact=dict(phone="+234 913 968 8610", wa="+234 913 968 8610")),
 
  dict(
   slug="gift-eboigbe",
   name="GIFT EBOIGBE &#8211; ACCOUNT EXECUTIVE (WEST AFRICA)",
-  contact=dict(phone="+234 707 475 3810", wa="")),
+  name_first=True,
+  contact=dict(phone="+234 707 475 3810", wa="+234 707 475 3810")),
 
  dict(
   slug="ajibola-bamisaye",
-  name="AJIBOLA O. BAMISAYE &#8211; COMPLIANCE &amp; RISK OFFICER",
-  contact=dict(phone="+234 707 468 3810", wa="")),
+  name="AJIBOLA O. BAMISAYE &#8211; RISK AND COMPLIANCE MANAGER",
+  name_first=True,
+  contact=dict(phone="+234 707 468 3810", wa="+234 707 468 3810")),
 
  dict(
   slug="joy-sanyu",
@@ -366,7 +438,7 @@ PEOPLE = [
   slug="orjinta-onyedikachi-anthony",
   name="ORJINTA ONYEDIKACHI ANTHONY &#8211; FRONTEND ENGINEER",
   name_first=True,
-  contact=dict(phone="+234 913 094 7049", wa="")),
+  contact=dict(phone="+234 913 094 7049", wa="+234 913 094 7049")),
 
  dict(
   slug="emmanuel-jaiyeola",
@@ -375,10 +447,24 @@ PEOPLE = [
   contact=dict(phone="+234 916 832 0775", wa="+234 916 832 0775")),
 
  dict(
-  slug="jane-cavarlho",
-  name="JANE CAVARLHO &#8211; PERSONAL MANAGER / INTERN",
+  slug="elohor-esalomi",
+  name="ELOHOR ESALOMI &#8211; CUSTOMER EXPERIENCE MANAGEMENT PERSONNEL",
   name_first=True,
-  contact=dict(phone="+971 50 157 7944", wa="+971 50 157 7944")),
+  # No office addresses for her -- only the country flags.
+  contact=dict(phone="+234 707 468 4122", wa="+234 707 468 4122",
+               flags_only=True)),
+
+] + [
+ # Jane has two signature sets, one per role; only the title differs.
+ dict(
+  slug=slug,
+  name="JANE CAVARLHO &#8211; " + role,
+  name_first=True,
+  contact=dict(phone="+971 50 157 7944", wa="+971 50 157 7944"))
+ for slug, role in [
+   ("jane-cavarlho", "PERSONAL MANAGER"),
+   ("jane-cavarlho-cemp", "CUSTOMER EXPERIENCE MANAGEMENT PERSONNEL"),
+ ]
 ]
 
 
@@ -408,11 +494,12 @@ NAME_ROW = """      <!-- NAME -->
           class="sig-name"
           style="
             font-family: %s;
-            font-size: 16px;
-            line-height: 30px;
+            font-size: 14px;
+            line-height: 20px;
             font-weight: bold;
             color: #1f2937;
             letter-spacing: 1px;
+            white-space: nowrap;
             padding-bottom: %dpx;
           "
         >
@@ -425,8 +512,8 @@ NAME_ROW = """      <!-- NAME -->
 def header(b, name, name_first):
     """Logo above the name, or the name above the logo."""
     if name_first:
-        return (NAME_ROW % (MONO, 12, name)) + "\n" + (LOGO_ROW % (14, lockup(b)))
-    return (LOGO_ROW % (14, lockup(b))) + "\n" + (NAME_ROW % (MONO, 12, name))
+        return (NAME_ROW % (MONO, 8, name)) + "\n" + (LOGO_ROW % (10, lockup(b)))
+    return (LOGO_ROW % (10, lockup(b))) + "\n" + (NAME_ROW % (MONO, 8, name))
 
 
 
@@ -446,11 +533,11 @@ TEMPLATE = """<!doctype html>
       cellpadding="0"
       cellspacing="0"
       border="0"
-      width="640"
+      width="700"
       style="
-        width: 640px;
-        max-width: 640px;
-        padding: 20px;
+        width: 700px;
+        max-width: 700px;
+        padding: 16px;
         font-family: {sans};
         color: #1f2937;
       "
@@ -464,10 +551,11 @@ TEMPLATE = """<!doctype html>
           style="
             font-family: {mono};
             font-size: 14px;
-            line-height: 30px;
+            line-height: 22px;
             font-weight: 700;
             color: {accent};
-            padding-bottom: 12px;
+            padding-bottom: 8px;
+            white-space: nowrap;
           "
         >
           {services}
@@ -476,8 +564,8 @@ TEMPLATE = """<!doctype html>
 
       <!-- DIVIDER -->
       <tr>
-        <td style="padding-bottom: 11px">
-          <div style="width: 30px; height: 3px; background: {accent}"></div>
+        <td style="padding-bottom: 9px">
+          <div style="width: 24px; height: 3px; background: {accent}"></div>
         </td>
       </tr>
 
@@ -490,7 +578,7 @@ TEMPLATE = """<!doctype html>
             font-size: 14px;
             line-height: 20px;
             color: #1f2937;
-            padding-bottom: 20px;
+            padding-bottom: 14px;
           "
         >
 {contact}
@@ -554,6 +642,8 @@ for person in PEOPLE:
         pb = dict(b)
         pb.update(person.get("contact", {}))
         pb.update(person.get("overrides", {}).get(b["key"], {}))
+        # People show the wa.me URL beside the WhatsApp icon.
+        pb.setdefault("wa_raw_link", True)
         path = os.path.join(pdir, b["file"])
         with io.open(path, "w", encoding="utf-8") as f:
             f.write(render(pb, person["name"], person.get("name_first", False)))
